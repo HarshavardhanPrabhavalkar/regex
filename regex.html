@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: burlywood;
+            margin-top: 200px;
+        }
+        .harsh{
+         background: cornflowerblue;
+         margin-left: 600px;
+         margin-right: 600px;
+        }
+        input{
+            background-color: blanchedalmond;
+            width: 200px;
+            height: 20px;
+        }
+        button{
+           background-color: darkgreen;
+           width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="harsh">
+    <label>Name</label>
+    <label style="font-size: small;color: brown;" id="msg_name"></label><br>
+    <input type="text" id="no1" placeholder="Name"><br><br>
+
+    <label>Mobile No</label>
+    <label style="font-size: small;color: brown;" id="msg_mobile_no"></label><br>
+    <input type="number" id="no2" placeholder="Mobile No"><br><br>
+
+    <label>Mail Id</label>
+    <label style="font-size: small;color: brown;" id="msg_mail_id"></label><br>
+    <input type="text" id="no3" placeholder="Mail id"><br><br>
+
+    <label>City</label>
+    <label style="font-size: small;color: brown;" id="msg_city"></label><br>
+    <input type="text" id="no4" placeholder="city"><br><br>
+
+    <button onclick="display()">submit</button></div>
+    <div id="res"></div>
+
+    <script>
+        function display()
+        {
+            var Name = document.getElementById("no1").value;
+            var Mobile = document.getElementById("no2").value;
+            var Mail = document.getElementById("no3").value;
+            var city = document.getElementById("no4").value;
+
+            document.getElementById("msg_name").innerHTML="";
+            document.getElementById("msg_mobile_no").innerHTML="";
+            document.getElementById("msg_mail_id").innerHTML="";
+            document.getElementById("msg_city").innerHTML="";
+
+            if(Name=="")
+            {
+                document.getElementById("msg_name").innerHTML="enter your name";
+                document.getElementById("no1").focus();
+                return;
+            }
+
+            if(Mobile=="")
+            {
+                document.getElementById("msg_mobile_no").innerHTML="enter your moblie no";
+                document.getElementById("no2").focus();
+                return;
+            }
+
+            if(Mail=="")
+            {
+                document.getElementById("msg_mail_id").innerHTML="enter your Mail Id";
+                document.getElementById("no3").focus();
+                return;
+            }
+
+            if(city=="")
+            {
+                document.getElementById("msg_city").innerHTML="enter your city name";
+                document.getElementById("no4").focus();
+                return;
+            }
+            if(patternemail(Mail)==false){
+                document.getElementById("msg_mail_id").innerHTML="enter your Mail Id";
+                document.getElementById("no3").focus();
+                return;
+            }
+            document.getElementById("res").innerHTML = " view display = " + Name + Mobile + Mail + city ;
+            
+        }
+        function patternemail(email)
+        {
+                let pattern = new RegExp(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+                return pattern.test(email);
+
+        }
+    </script>
+</body>
+</html>
